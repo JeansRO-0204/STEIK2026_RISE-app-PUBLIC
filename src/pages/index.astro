@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { SITE } from '../consts';
+import { getPublishedPosts } from '../lib/posts';
+
+const latestPosts = (await getPublishedPosts()).slice(0, 3);
+---
+
+<BaseLayout>
+  <section class="space-y-4">
+    <h1 class="text-3xl font-bold tracking-tight">{SITE.title}</h1>
+    <p class="max-w-2xl text-neutral-600">{SITE.description}</p>
+    <a href="/links" class="inline-block rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-700">
+      Browse resources
+    </a>
+  </section>
+
+  <section class="mt-12 space-y-2">
+    <div class="flex items-baseline justify-between">
+      <h2 class="text-xl font-semibold">Latest posts</h2>
+      <a href="/blog" class="text-sm text-neutral-600 hover:text-neutral-900">All posts →</a>
+    </div>
+    <PostList posts={latestPosts} />
+  </section>
+</BaseLayout>
