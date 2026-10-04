@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import PixelSkyline from '../../components/PixelSkyline.astro';
+
+const SECTIONS = [
+  { id: 'tka', label: 'TKA', theme: 'bg-brand' },
+  { id: 'utbk', label: 'UTBK', theme: 'bg-white' },
+];
+---
+
+<BaseLayout title="Materi Program">
+  <h1 class="sr-only">Materi Program Rise Camp</h1>
+  {SECTIONS.map(({ id, label, theme }, i) => (
+    <>
+      {i > 0 && <PixelSkyline />}
+      <section id={id} class:list={['scroll-mt-4 px-4 py-16 sm:py-20', theme]}>
+        <h2 class="relative mx-auto w-fit font-pixel font-bold text-black">
+          <span class="block w-fit bg-yellow px-8 py-2 text-3xl shadow-hard sm:text-5xl">MATERI</span>{' '}
+          <span class="-mt-2 ml-[40%] block w-fit bg-teal px-6 py-1 text-4xl shadow-hard sm:text-7xl">{label}</span>
+        </h2>
+        <!-- TODO: grey box in Figma; likely an embedded Drive folder or video -->
+        <Placeholder label={`Konten materi ${label}`} class="mx-auto mt-16 aspect-[1107/472] max-w-[1107px]" />
+      </section>
+    </>
+  ))}
+</BaseLayout>

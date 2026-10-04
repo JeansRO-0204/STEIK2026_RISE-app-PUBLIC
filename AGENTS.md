@@ -1,24 +1,18 @@
 ## Project
 
-Static site for Aksang STEI-K: Google Drive resource links and a blog. Astro (static output) + Tailwind CSS 4 + MDX.
+Static site for Rise Camp (STEI-K ITB '26): Drive-linked study materials, programs, event docs, QnA, blog. Astro (static output) + Tailwind CSS 4 + MDX.
 
 - Content is hard-coded in the repo by request — do not introduce a CMS, database, or server runtime.
-- Drive links: `src/data/links.ts` (validated with zod at build time).
-- Blog posts: `src/content/blog/*.md(x)`, schema in `src/content.config.ts`. Drafts are dev-only.
-- Site-wide strings (title, description, `lang`, nav): `src/consts.ts`.
-- Design source: team design file (shared privately, read-only).
+- Content data lives in `src/data/*.ts`; site-wide strings in `src/consts.ts`; blog in `src/content/blog/`.
+- Design tokens (colors sampled from Figma, fonts) are in `src/styles/global.css` `@theme`.
+- Design source: team design file (shared privately, read-only). Exports in `design/` (gitignored).
+- Missing assets render via `<Placeholder>` and are marked `TODO` in the markup.
 - `CLAUDE.md` is a symlink to this file — edit `AGENTS.md` only.
 - Run `npm run check` and `npm run build` before committing.
 
 ## Development
 
-When starting the dev server, use background mode:
-
-```
-astro dev --background
-```
-
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+Start/stop the dev server in the background with `npm run up` / `npm run down` (`npm run status`, `npm run logs`).
 
 ## Documentation
 

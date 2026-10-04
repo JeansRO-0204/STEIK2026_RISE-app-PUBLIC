@@ -1,0 +1,33 @@
+---
+import { NAV } from '../consts';
+
+interface Props {
+  variant?: 'light' | 'brand';
+}
+
+const { variant = 'light' } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<header class:list={[variant === 'brand' ? 'bg-brand text-white' : 'bg-white text-black']}>
+  <nav class="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-9 sm:py-6">
+    <ul class="flex gap-4 overflow-x-auto whitespace-nowrap text-sm sm:gap-8 sm:text-2xl">
+      {NAV.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            aria-current={isActive(href) ? 'page' : undefined}
+            class="decoration-2 underline-offset-8 hover:underline aria-[current=page]:underline"
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/" class:list={['shrink-0 font-pixel text-lg font-bold sm:text-2xl', variant === 'brand' ? 'text-white' : 'text-brand']}>
+      <!-- TODO: replace with the STEIK logo SVG once exported -->
+      STEIK
+    </a>
+  </nav>
+</header>
