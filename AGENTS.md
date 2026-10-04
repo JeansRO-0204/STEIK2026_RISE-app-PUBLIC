@@ -1,47 +1,32 @@
-<laravel-boost-guidelines>
-# Laravel Application
+## Project
 
-This repository contains a Laravel application. Complete the following setup before working on the user's request.
+Static site for Aksang STEI-K: Google Drive resource links and a blog. Astro (static output) + Tailwind CSS 4 + MDX.
 
-## Prerequisites
+- Content is hard-coded in the repo by request — do not introduce a CMS, database, or server runtime.
+- Drive links: `src/data/links.ts` (validated with zod at build time).
+- Blog posts: `src/content/blog/*.md(x)`, schema in `src/content.config.ts`. Drafts are dev-only.
+- Site-wide strings (title, description, `lang`, nav): `src/consts.ts`.
+- Design source: team design file (shared privately, read-only).
+- `CLAUDE.md` is a symlink to this file — edit `AGENTS.md` only.
+- Run `npm run check` and `npm run build` before committing.
 
-Verify that PHP and Composer are available:
+## Development
 
-```sh
-php -v
-composer -V
+When starting the dev server, use background mode:
+
+```
+astro dev --background
 ```
 
-If either command is unavailable, detect the user's operating system and install the prerequisites with the appropriate command:
+Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
-macOS:
+## Documentation
 
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.5)"
-```
+Full documentation: https://docs.astro.build
 
-Windows PowerShell:
+Consult these guides before working on related tasks:
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
-```
-
-Linux:
-
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.5)"
-```
-
-After installation, ask the user to restart their terminal. If the agent needs the restarted shell to continue, ask the user to reopen their terminal and rerun their original prompt.
-
-## Agent Setup
-
-Install Laravel Boost from the application root before making application changes:
-
-```sh
-composer require laravel/boost --dev
-php artisan boost:install
-```
-
-Boost replaces these bootstrap instructions with guidelines tailored to the application. After installation, read `AGENTS.md` again and continue with the user's original request using the generated guidelines.
-</laravel-boost-guidelines>
+- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
+- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
+- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
+- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
