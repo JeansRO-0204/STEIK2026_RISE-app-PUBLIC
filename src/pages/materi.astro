@@ -10,12 +10,12 @@ const INTRO =
   <section class="bg-linear-to-b from-tag-blue via-brand-tint to-white">
     <div class="mx-auto max-w-[1440px] px-4 pt-24 pb-12 sm:px-14 sm:pt-56">
       <h1 class="mx-auto w-fit leading-[0.85]">
-        <span class="block text-[clamp(3.5rem,9vw,8.5rem)]">Materi</span>{' '}
-        <span class="text-script block pl-[30%] text-[clamp(3.5rem,9vw,8.5rem)]">Rise Camp</span>
+        <span class="block text-[clamp(3.5rem,9vw,8.5rem)]" data-reveal="up" style="--reveal-delay: 60ms">Materi</span>{' '}
+        <span class="text-script block pl-[30%] text-[clamp(3.5rem,9vw,8.5rem)]" data-reveal="up" style="--reveal-delay: 200ms">Rise Camp</span>
       </h1>
-      <h2 class="mt-24 text-3xl font-semibold sm:mt-40 sm:text-5xl">Kumpulan materi</h2>
-      <p class="mt-2 max-w-4xl font-light sm:text-xl">{INTRO}</p>
-      <label class="relative mt-8 block">
+      <h2 class="mt-24 text-3xl font-semibold sm:mt-40 sm:text-5xl" data-reveal="up">Kumpulan materi</h2>
+      <p class="mt-2 max-w-4xl font-light sm:text-xl" data-reveal="fade" style="--reveal-delay: 120ms">{INTRO}</p>
+      <label class="relative mt-8 block" data-reveal="up" style="--reveal-delay: 200ms">
         <span class="sr-only">Cari materi</span>
         <input
           id="materi-search"
@@ -31,12 +31,15 @@ const INTRO =
   </section>
 
   <section class="mx-auto max-w-[1440px] px-4 pb-16 sm:px-14">
-    <ul id="materi-list" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-20">
+    <ul id="materi-list" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-20" data-reveal-group>
       {MATERI.map((item) => {
         const category = CATEGORIES[item.category];
         const Tag = item.href ? 'a' : 'div';
         return (
-          <li data-search={`${item.title} ${item.description} ${category.label}`.toLowerCase()}>
+          <li
+            data-search={`${item.title} ${item.description} ${category.label}`.toLowerCase()}
+            data-reveal="up"
+          >
             <Tag
               {...(item.href ? { href: item.href, target: '_blank', rel: 'noopener noreferrer' } : {})}
               class:list={[

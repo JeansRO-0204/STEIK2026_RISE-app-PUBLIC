@@ -12,9 +12,9 @@ const { posts } = Astro.props;
 {posts.length === 0 ? (
   <p class="text-neutral-600">Belum ada tulisan.</p>
 ) : (
-  <ul class="divide-y divide-neutral-200">
+  <ul class="divide-y divide-neutral-200" data-reveal-group>
     {posts.map((post) => (
-      <li class="py-4">
+      <li class="py-4" data-reveal="up">
         <a href={`/blog/${post.id}`} class="group block">
           <h3 class="font-medium group-hover:underline">
             {post.data.title}

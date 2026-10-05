@@ -3,16 +3,11 @@ import { Image } from 'astro:assets';
 import { NAV } from '../consts';
 import logo from '../assets/logo-steik.png';
 
-interface Props {
-  variant?: 'light' | 'brand';
-}
-
-const { variant = 'light' } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 
-<header class:list={[variant === 'brand' ? 'bg-brand text-white' : 'bg-white text-black']}>
+<header class="animate-nav-in sticky top-0 z-50 bg-white text-black shadow-sm">
   <nav class="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-9 sm:py-6">
     <ul class="flex gap-4 overflow-x-auto whitespace-nowrap text-sm sm:gap-8 sm:text-2xl">
       {NAV.map(({ href, label }) => (
