@@ -7,7 +7,10 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 
-<header class="animate-nav-in sticky top-0 z-50 bg-white text-black shadow-sm">
+<header
+  id="site-nav"
+  class="animate-nav-in sticky top-0 z-50 bg-white text-black shadow-sm transition-colors duration-300"
+>
   <nav class="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-4 sm:px-9 sm:py-6">
     <ul class="flex gap-4 overflow-x-auto whitespace-nowrap text-sm sm:gap-8 sm:text-2xl">
       {NAV.map(({ href, label }) => (
@@ -27,3 +30,21 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     </a>
   </nav>
 </header>
+
+<script>
+  // Turn the navbar purple once the user scrolls, white again at the top.
+  const nav = document.getElementById('site-nav');
+  if (nav) {
+    const update = () => {
+      if (window.scrollY > 16) {
+        nav.classList.add('bg-brand', 'text-white');
+        nav.classList.remove('bg-white', 'text-black');
+      } else {
+        nav.classList.remove('bg-brand', 'text-white');
+        nav.classList.add('bg-white', 'text-black');
+      }
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+</script>
