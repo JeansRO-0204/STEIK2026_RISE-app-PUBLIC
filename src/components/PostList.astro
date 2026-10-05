@@ -10,7 +10,7 @@ const { posts } = Astro.props;
 ---
 
 {posts.length === 0 ? (
-  <p class="text-neutral-600">No posts yet.</p>
+  <p class="text-neutral-600">Belum ada tulisan.</p>
 ) : (
   <ul class="divide-y divide-neutral-200">
     {posts.map((post) => (
@@ -18,7 +18,7 @@ const { posts } = Astro.props;
         <a href={`/blog/${post.id}`} class="group block">
           <h3 class="font-medium group-hover:underline">
             {post.data.title}
-            {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-800">Draft</span>}
+            {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-800">Draf</span>}
           </h3>
           <p class="text-sm text-neutral-600">{post.data.description}</p>
           <time datetime={post.data.pubDate.toISOString()} class="text-xs text-neutral-500">
