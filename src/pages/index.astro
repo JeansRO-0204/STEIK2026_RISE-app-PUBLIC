@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Placeholder from '../components/Placeholder.astro';
+import { Image } from 'astro:assets';
+import classPhoto from '../assets/class-photo.jpg';
 
 const VALUES = ['Reinforce', 'Ignite', 'Strengthen', 'Elevate'];
 
 const KEYS = [
-  { letter: 'R', outer: 'bg-key-r', inner: 'bg-white/20' },
-  { letter: 'I', outer: 'bg-key-i', inner: 'bg-white/20' },
-  { letter: 'S', outer: 'bg-key-s', inner: 'bg-white/20' },
-  { letter: 'E', outer: 'bg-key-e', inner: 'bg-white/20' },
+  { letter: 'R', word: 'Reinforce', src: '/images/keys/r.png' },
+  { letter: 'I', word: 'Ignite', src: '/images/keys/i.png' },
+  { letter: 'S', word: 'Strengthen', src: '/images/keys/s.png' },
+  { letter: 'E', word: 'Elevate', src: '/images/keys/e.png' },
 ];
 
 const LOREM =
@@ -17,16 +18,10 @@ const LOREM =
 
 <BaseLayout>
   <section class="relative overflow-hidden">
-    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div class="grid-lines absolute inset-0" aria-hidden="true"></div>
     <div class="relative mx-auto flex min-h-[60vh] max-w-[1440px] flex-col items-center justify-center px-4 py-24 sm:min-h-[900px]">
-      <!-- TODO: computer icon (top-right of title) not exported yet -->
-      <img
-        src="/icons/keyboard-blue.png"
-        alt=""
-        width="116"
-        height="116"
-        class="absolute top-[55%] left-[8%] w-12 [image-rendering:pixelated] sm:left-[20%] sm:w-24"
-      />
+      <img src="/icons/computer-blue.svg" alt="" width="68" height="75" class="absolute top-[18%] right-[10%] w-10 rotate-[12deg] sm:top-[24%] sm:right-[22%] sm:w-[88px]" />
+      <img src="/icons/keyboard-blue.svg" alt="" width="93" height="93" class="absolute top-[52%] left-[4%] w-14 sm:left-[10%] sm:w-24" />
       <h1 class="text-center leading-[0.85]">
         <span class="block text-[clamp(3rem,10vw,9.5rem)] font-normal">Welcome to</span>{' '}
         <span class="text-script block pl-[10%] text-[clamp(3rem,10vw,9.5rem)]">Rise Camp</span>
@@ -43,8 +38,13 @@ const LOREM =
   </section>
 
   <section class="mx-auto grid max-w-[1440px] items-center gap-8 px-4 py-24 sm:px-14 md:grid-cols-2 md:gap-10 md:py-40">
-    <!-- TODO: replace with the class photo once exported -->
-    <Placeholder label="Foto angkatan STEI-K '26" class="aspect-[704/430] rounded-[40px]" />
+    <Image
+      src={classPhoto}
+      alt="Foto bersama angkatan STEI-K '26"
+      widths={[640, 1000, 1400]}
+      sizes="(min-width: 768px) 50vw, 100vw"
+      class="aspect-[704/430] w-full rounded-[40px] object-cover"
+    />
     <div class="space-y-4">
       <h2 class="text-5xl leading-none font-semibold sm:text-7xl">
         Hello! <span class="text-script font-normal">We are</span>
@@ -60,21 +60,9 @@ const LOREM =
       The <span class="text-script px-2">philosophy</span> behind
     </h2>
     <ul class="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-10">
-      {KEYS.map(({ letter, outer, inner }) => (
-        <li
-          class:list={[
-            'relative aspect-[242/142] rounded-3xl p-[16%_16%_25%] shadow-[inset_0_-10px_0_rgba(0,0,0,0.18),0_6px_10px_rgba(0,0,0,0.15)]',
-            outer,
-          ]}
-        >
-          <span
-            class:list={[
-              'text-script flex h-full items-center justify-center rounded-2xl text-5xl text-white ring-1 ring-black/10 sm:text-6xl',
-              inner,
-            ]}
-          >
-            {letter}
-          </span>
+      {KEYS.map(({ letter, word, src }) => (
+        <li>
+          <img src={src} alt={`${letter} — ${word}`} width="268" height="268" class="mx-auto w-full max-w-[242px]" />
         </li>
       ))}
     </ul>

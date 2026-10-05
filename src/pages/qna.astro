@@ -11,8 +11,10 @@ const card = 'bg-brand-soft px-6 py-8 shadow-hard sm:px-14 sm:text-2xl';
 <BaseLayout title="QnA">
   <section class="bg-linear-to-b from-brand via-brand-tint to-white">
     <div class="mx-auto max-w-[1440px] px-4 pt-24 pb-8 sm:px-14 sm:pt-32">
-      <!-- TODO: mailbox pixel icon not exported yet -->
-      <h1 class="font-pixel text-6xl font-bold sm:text-8xl">QnA</h1>
+      <h1 class="flex items-center gap-4 font-pixel text-6xl sm:text-8xl">
+        <img src="/icons/mailbox.svg" alt="" width="123" height="117" class="w-16 sm:w-[123px]" />
+        QnA
+      </h1>
       {QNA_FORM_URL ? (
         <a
           href={QNA_FORM_URL}

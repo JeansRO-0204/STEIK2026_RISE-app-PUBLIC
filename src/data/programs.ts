@@ -1,11 +1,14 @@
+import type { ImageMetadata } from 'astro';
+import tkaBanner from '../assets/program-tka.webp';
+import utbkBanner from '../assets/program-utbk.webp';
+
 export interface Program {
   id: 'tka' | 'utbk';
   title: string;
   tagline: string;
   description: string;
   labelClass: string;
-  /** Banner path under public/, e.g. '/images/program-tka.jpg'. Empty = placeholder. */
-  banner: string;
+  banner: ImageMetadata;
 }
 
 const LOREM =
@@ -18,7 +21,7 @@ export const PROGRAMS: Program[] = [
     tagline: '“Aku Siap Bantai TKA”',
     description: LOREM,
     labelClass: 'bg-program-tka',
-    banner: '',
+    banner: tkaBanner,
   },
   {
     id: 'utbk',
@@ -26,6 +29,6 @@ export const PROGRAMS: Program[] = [
     tagline: 'Aku Siap 700+ UTBK',
     description: LOREM,
     labelClass: 'bg-program-utbk',
-    banner: '',
+    banner: utbkBanner,
   },
 ];

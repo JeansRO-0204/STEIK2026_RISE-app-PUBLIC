@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Placeholder from '../../components/Placeholder.astro';
+import { Image } from 'astro:assets';
 import { PROGRAMS } from '../../data/programs';
 ---
 
@@ -8,18 +8,14 @@ import { PROGRAMS } from '../../data/programs';
   <section class="mx-auto max-w-[1440px] px-4 py-8 sm:px-10">
     <h1 class="font-pixel text-4xl sm:text-5xl">Program Rise Camp</h1>
     <div class="mt-6 space-y-16 sm:mt-8 sm:space-y-36">
-      {PROGRAMS.map((program) => (
+      {PROGRAMS.map((program, i) => (
         <article class="overflow-hidden rounded-xl border border-brand-deep shadow-sm">
-          {program.banner ? (
-            <img src={program.banner} alt={program.tagline} class="aspect-[1340/360] w-full object-cover" />
-          ) : (
-            <Placeholder label={`Banner ${program.title} — ${program.tagline}`} class="aspect-[1340/360] w-full" />
-          )}
+          <Image src={program.banner} alt={program.tagline} widths={[800, 1340, 2000]} sizes="(min-width: 1440px) 1340px, 100vw" loading={i === 0 ? 'eager' : 'lazy'} class="aspect-[1340/360] w-full object-cover" />
           <div class="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
               <h2
                 class:list={[
-                  'inline-block px-6 py-2 text-4xl font-semibold text-white shadow-hard sm:text-7xl',
+                  'inline-block px-6 py-2 text-4xl font-semibold text-white shadow-hard sm:text-5xl lg:text-7xl',
                   program.labelClass,
                 ]}
               >
