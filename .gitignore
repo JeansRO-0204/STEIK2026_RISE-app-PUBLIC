@@ -24,3 +24,11 @@ pnpm-debug.log*
 .idea/
 design/
 .claude/
+
+# leftovers from the old Laravel skeleton — never commit these
+vendor/
+storage/
+bootstrap/cache/
+database/*.sqlite
+public/build/
+.phpunit.result.cache

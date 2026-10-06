@@ -33,10 +33,10 @@ const SECTIONS = [
           <img src="/images/skyline-band.svg" alt="" width="1474" height="176" class="block h-auto w-[102.4%] max-w-none" />
         </div>
       )}
-      <section id={id} class:list={['scroll-mt-4 px-4 py-16 sm:py-24', theme]}>
+      <section id={id} class:list={['scroll-mt-4 px-4 py-16 sm:py-24', theme]} data-reveal="up">
         <h2 class="relative mx-auto w-fit font-pixel text-black">
           {icons.map((icon) => (
-            <img src={icon.src} alt="" width={icon.w} height={icon.h} class:list={['absolute w-10 sm:w-[83px]', icon.pos]} />
+            <img src={icon.src} alt="" width={icon.w} height={icon.h} class:list={['animate-float absolute w-10 sm:w-[83px]', icon.pos]} style={{ animationDelay: `-${i * 3 + 1.5}s` }} />
           ))}
           <span class="block w-fit bg-yellow px-8 py-2 text-3xl shadow-hard sm:text-5xl">MATERI</span>{' '}
           <span class="relative -mt-3 ml-[40%] block w-fit bg-teal px-6 py-1 text-4xl shadow-hard sm:text-7xl">{label}</span>

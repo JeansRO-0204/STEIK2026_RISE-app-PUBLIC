@@ -4,12 +4,12 @@ import { Image } from 'astro:assets';
 import { PROGRAMS } from '../../data/programs';
 ---
 
-<BaseLayout title="Program Kami" navVariant="brand">
+<BaseLayout title="Program Kami">
   <section class="mx-auto max-w-[1440px] px-4 py-8 sm:px-10">
-    <h1 class="font-pixel text-4xl sm:text-5xl">Program Rise Camp</h1>
-    <div class="mt-6 space-y-16 sm:mt-8 sm:space-y-36">
+    <h1 class="font-pixel text-4xl sm:text-5xl" data-reveal="up">Program Rise Camp</h1>
+    <div class="mt-6 space-y-16 sm:mt-8 sm:space-y-36" data-reveal-group>
       {PROGRAMS.map((program, i) => (
-        <article class="overflow-hidden rounded-xl border border-brand-deep shadow-sm">
+        <article class="overflow-hidden rounded-xl border border-brand-deep shadow-sm" data-reveal="up">
           <Image src={program.banner} alt={program.tagline} widths={[800, 1340, 2000]} sizes="(min-width: 1440px) 1340px, 100vw" loading={i === 0 ? 'eager' : 'lazy'} class="aspect-[1340/360] w-full object-cover" />
           <div class="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-end">
             <div>
